@@ -14,8 +14,9 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            //done
-            $table->id('user_id')->unique();
+            // bigIncrements = This takes care of making it unsigned, auto increment and primary key.
+            $table->bigIncrements('user_id')->unique();
+
             $table->string('firstname');
             $table->string('lastname');
             $table->string('email')->unique();
@@ -23,8 +24,9 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamp('completed_trainings')->nullable();
             $table->timestamp('exercises_created')->nullable();
-            $table->timestamp('creation_date');
-            $table->timestamp('modification_date');
+
+            $table->timestamp('creation_date')->nullable();
+            $table->timestamp('modification_date')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -14,14 +14,17 @@ class CreateUsersTrackedExercisesTable extends Migration
     public function up()
     {
         Schema::create('users_tracked_exercises', function (Blueprint $table) {
-            //done
-            $table->id('user_tracked_exercises_id')->unique();
-            $table->id('training_id');
-            $table->id('user_id');
-            $table->id('exercise_id');
+            $table->bigIncrements('user_tracked_exercise_id')->unique();
+
+            //this is the tracked exercises for a specific users, on a specific training
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('user_id')->on('users');
+            $table->unsignedBigInteger('exercise_id');
+            $table->foreign('exercise_id')->references('exercise_id')->on('exercises_definition');
+
             $table->tinyInteger('total_repetitions_goal')->unsigned();
             $table->tinyInteger('total_repetitions_achieved')->unsigned()->nullable();
-            $table->tinyInteger('series_goal')->unsigned();
+            //series_goal is not included here since it's already on the table 'trainings_definition', and I don't want to create a column each time for this tracked exercise
             $table->tinyInteger('series_achieved')->unsigned()->nullable();
             $table->tinyInteger('weights_lifted_at_series_1')->unsigned()->nullable();
             $table->tinyInteger('weights_lifted_at_series_2')->unsigned()->nullable();
@@ -29,16 +32,17 @@ class CreateUsersTrackedExercisesTable extends Migration
             $table->tinyInteger('weights_lifted_at_series_4')->unsigned()->nullable();
             $table->tinyInteger('weights_lifted_at_series_5')->unsigned()->nullable();
             $table->tinyInteger('weights_lifted_at_series_6')->unsigned()->nullable();
-            $table->timestamp('time_spent_at_series_1')->nullable();
+            $table->timestamp('time_spent_at_series_1');
             $table->timestamp('time_spent_at_series_2')->nullable();
             $table->timestamp('time_spent_at_series_3')->nullable();
             $table->timestamp('time_spent_at_series_4')->nullable();
             $table->timestamp('time_spent_at_series_5')->nullable();
             $table->timestamp('time_spent_at_series_6')->nullable();
             $table->tinyText('rest_times_between_series');
-            $table->enum('exercise_progress_status',["backwards","remain_same","progressed"]);
-            $table->timestamp('created_at');
-            $table->timestamp('modified_at');
+            $table->enum('exercise_progress_status',["downgrade","stays","progresses"]);
+
+            $table->timestamp('creation_date')->nullable();
+            $table->timestamp('modification_date')->nullable();
             $table->timestamps();
         });
     }
