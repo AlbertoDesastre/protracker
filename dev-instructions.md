@@ -1,1 +1,0 @@
-hacer tabla training review
