@@ -14,11 +14,19 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+            // bigIncrements = This takes care of making it unsigned, auto increment and primary key.
+            $table->bigIncrements('user_id')->unique();
+
+            $table->string('firstname');
+            $table->string('lastname');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->unsignedInteger('completed_trainings')->nullable();
+            $table->unsignedBigInteger('exercises_created')->nullable();
+
+            $table->timestamp('creation_date')->nullable();
+            $table->timestamp('modification_date')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
