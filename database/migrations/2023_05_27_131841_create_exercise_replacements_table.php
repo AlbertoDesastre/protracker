@@ -17,7 +17,7 @@ class CreateExerciseReplacementsTable extends Migration
             //this table take an exercise id as a reference a provides an easir version for that exercise
             $table->bigIncrements('exercise_replacement_id')->unique();
             $table->unsignedBigInteger('exercise_id');
-            $table->foreign('exercise_id')->references('exercise_id')->on('exercises_definition');
+            $table->foreign('exercise_id')->references('exercise_id')->on('exercises_definitions');
 
             $table->string('name',50);
             $table->enum('how_hard_it_is_compared_to_original_exercise', ['slightly easier','easier', 'way easier','basic form']);

@@ -20,7 +20,7 @@ class CreateUsersTrackedExercisesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('user_id')->on('users');
             $table->unsignedBigInteger('exercise_id');
-            $table->foreign('exercise_id')->references('exercise_id')->on('exercises_definition');
+            $table->foreign('exercise_id')->references('exercise_id')->on('exercises_definitions');
 
             $table->tinyInteger('total_repetitions_goal')->unsigned();
             $table->tinyInteger('total_repetitions_achieved')->unsigned()->nullable();

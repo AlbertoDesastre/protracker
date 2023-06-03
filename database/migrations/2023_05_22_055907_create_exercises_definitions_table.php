@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateExercisesDefinitionTable extends Migration
+class CreateExercisesDefinitionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,9 @@ class CreateExercisesDefinitionTable extends Migration
      */
     public function up()
     {
-        Schema::create('exercises_definition', function (Blueprint $table) {
+        Schema::create('exercises_definitions', function (Blueprint $table) {
+            $table->dropForeign('creator_user_id');
+
             $table->bigIncrements('exercise_id')->unique();
             //user that created this exercise
             $table->unsignedBigInteger('creator_user_id');
@@ -27,7 +29,7 @@ class CreateExercisesDefinitionTable extends Migration
             $table->text('image_1');
             $table->text('image_2');
             $table->text('image_3');
-            $table->text('image_4');
+            $table->text('image_4')->nullable();
 
             $table->timestamp('creation_date')->nullable();
             $table->timestamp('modification_date')->nullable();
@@ -41,6 +43,6 @@ class CreateExercisesDefinitionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('exercises_definition');
+        Schema::dropIfExists('exercises_definitions');
     }
 }

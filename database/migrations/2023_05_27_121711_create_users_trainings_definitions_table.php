@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTrainingsDefinitionTable extends Migration
+class CreateUsersTrainingsDefinitionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateUsersTrainingsDefinitionTable extends Migration
      */
     public function up()
     {
-        Schema::create('trainings_definition', function (Blueprint $table) {
+        Schema::create('trainings_definitions', function (Blueprint $table) {
             //exercises included in the training:
             $table->unsignedBigInteger('exercises_definition_id_1');
             $table->unsignedBigInteger('exercises_definition_id_2')->nullable();
@@ -31,21 +31,21 @@ class CreateUsersTrainingsDefinitionTable extends Migration
             $table->unsignedBigInteger('exercises_definition_id_14')->nullable();
             $table->unsignedBigInteger('exercises_definition_id_15')->nullable();
 
-            $table->foreign('exercises_definition_id_1')->references('exercise_id')->on('exercises_definition');
-            $table->foreign('exercises_definition_id_2')->references('exercise_id')->on('exercises_definition')->nullable();
-            $table->foreign('exercises_definition_id_3')->references('exercise_id')->on('exercises_definition')->nullable();
-            $table->foreign('exercises_definition_id_4')->references('exercise_id')->on('exercises_definition')->nullable();
-            $table->foreign('exercises_definition_id_5')->references('exercise_id')->on('exercises_definition')->nullable();
-            $table->foreign('exercises_definition_id_6')->references('exercise_id')->on('exercises_definition')->nullable();
-            $table->foreign('exercises_definition_id_7')->references('exercise_id')->on('exercises_definition')->nullable();
-            $table->foreign('exercises_definition_id_8')->references('exercise_id')->on('exercises_definition')->nullable();
-            $table->foreign('exercises_definition_id_9')->references('exercise_id')->on('exercises_definition')->nullable();
-            $table->foreign('exercises_definition_id_10')->references('exercise_id')->on('exercises_definition')->nullable();
-            $table->foreign('exercises_definition_id_11')->references('exercise_id')->on('exercises_definition')->nullable();
-            $table->foreign('exercises_definition_id_12')->references('exercise_id')->on('exercises_definition')->nullable();
-            $table->foreign('exercises_definition_id_13')->references('exercise_id')->on('exercises_definition')->nullable();
-            $table->foreign('exercises_definition_id_14')->references('exercise_id')->on('exercises_definition')->nullable();
-            $table->foreign('exercises_definition_id_15')->references('exercise_id')->on('exercises_definition')->nullable();
+            $table->foreign('exercises_definition_id_1')->references('exercise_id')->on('exercises_definitions');
+            $table->foreign('exercises_definition_id_2')->references('exercise_id')->on('exercises_definitions')->nullable();
+            $table->foreign('exercises_definition_id_3')->references('exercise_id')->on('exercises_definitions')->nullable();
+            $table->foreign('exercises_definition_id_4')->references('exercise_id')->on('exercises_definitions')->nullable();
+            $table->foreign('exercises_definition_id_5')->references('exercise_id')->on('exercises_definitions')->nullable();
+            $table->foreign('exercises_definition_id_6')->references('exercise_id')->on('exercises_definitions')->nullable();
+            $table->foreign('exercises_definition_id_7')->references('exercise_id')->on('exercises_definitions')->nullable();
+            $table->foreign('exercises_definition_id_8')->references('exercise_id')->on('exercises_definitions')->nullable();
+            $table->foreign('exercises_definition_id_9')->references('exercise_id')->on('exercises_definitions')->nullable();
+            $table->foreign('exercises_definition_id_10')->references('exercise_id')->on('exercises_definitions')->nullable();
+            $table->foreign('exercises_definition_id_11')->references('exercise_id')->on('exercises_definitions')->nullable();
+            $table->foreign('exercises_definition_id_12')->references('exercise_id')->on('exercises_definitions')->nullable();
+            $table->foreign('exercises_definition_id_13')->references('exercise_id')->on('exercises_definitions')->nullable();
+            $table->foreign('exercises_definition_id_14')->references('exercise_id')->on('exercises_definitions')->nullable();
+            $table->foreign('exercises_definition_id_15')->references('exercise_id')->on('exercises_definitions')->nullable();
 
             //series goal per exercise:
             $table->tinyInteger('series_goal_for_exercise_1')->unsigned();
@@ -79,6 +79,6 @@ class CreateUsersTrainingsDefinitionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_trainings_definition');
+        Schema::dropIfExists('users_trainings_definitions');
     }
 }
