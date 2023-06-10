@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         \App\Models\ExerciseDefinition::factory(30)->create();
         \App\Models\UserTrackedExercise::factory(20)->create();
         \App\Models\UserTrainingDefinition::factory(5)->create();
+        \App\Models\ExerciseReplacement::factory(10)->create();
     }
 }
