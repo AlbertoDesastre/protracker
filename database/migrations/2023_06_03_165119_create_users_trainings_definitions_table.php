@@ -66,8 +66,6 @@ class CreateUsersTrainingsDefinitionsTable extends Migration
 
              //when user wants to save this training for later
              $table->boolean('saved');
-             $table->timestamp('creation_date')->nullable();
-             $table->timestamp('modification_date')->nullable();
              $table->timestamps();
         });
     }

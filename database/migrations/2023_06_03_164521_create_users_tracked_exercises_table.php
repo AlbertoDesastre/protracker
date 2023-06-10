@@ -44,8 +44,6 @@ class CreateUsersTrackedExercisesTable extends Migration
 
             $table->enum('exercise_progress_status',["downgrade","stays","progresses"]);
 
-            $table->timestamp('creation_date')->nullable();
-            $table->timestamp('modification_date')->nullable();
             $table->timestamps();
         });
     }

@@ -27,8 +27,6 @@ class CreateExerciseReplacementsTable extends Migration
             $table->text('image_3');
             $table->text('image_4');
 
-            $table->timestamp('creation_date')->nullable();
-            $table->timestamp('modification_date')->nullable();
             $table->timestamps();
         });
     }

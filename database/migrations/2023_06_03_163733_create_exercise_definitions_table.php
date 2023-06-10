@@ -29,8 +29,7 @@ class CreateExerciseDefinitionsTable extends Migration
              $table->text('image_3')->nullable();
              $table->text('image_4')->nullable();
 
-             $table->timestamp('creation_date')->nullable();
-             $table->timestamp('modification_date')->nullable();
+             $table->timestamps();
         });
     }
 

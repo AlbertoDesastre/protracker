@@ -56,8 +56,6 @@ class CreateTrackedTrainingsTable extends Migration
 
             $table->boolean('completed');
             $table->boolean('pending');
-            $table->timestamp('creation_date')->nullable();
-            $table->timestamp('modification_date')->nullable();
             $table->timestamps();
         });
     }
