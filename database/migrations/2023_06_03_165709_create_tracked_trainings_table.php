@@ -35,7 +35,6 @@ class CreateTrackedTrainingsTable extends Migration
             $table->unsignedBigInteger('user_tracked_exercises_id_13')->nullable();
             $table->unsignedBigInteger('user_tracked_exercises_id_14')->nullable();
             $table->unsignedBigInteger('user_tracked_exercises_id_15')->nullable();
-            $table->unsignedBigInteger('user_tracked_exercises_id_16')->nullable();
 
 
             $table->foreign('user_tracked_exercises_id_1')->references('user_tracked_exercise_id')->on('users_tracked_exercises');
